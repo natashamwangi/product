@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAdd;
+    Button btnAd;
     ListView list;
     ListViewActivity adapter;
     public MainActivity CustomListView = null;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnAdd = (Button) findViewById(R.id.button_add);
+
 
         CustomListView = this;
 
@@ -44,50 +44,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         /******** Take some data in Arraylist ( CustomListViewValuesArr ) ***********/
         setListData();
 
 
-        list= ( ListView )findViewById( R.id.listView );  // List defined in XML ( See Below )
+        list = (ListView) findViewById(R.id.listView);  // List defined in XML ( See Below )
 
         /**************** Create Custom Adapter *********/
-        adapter=new ListViewActivity( CustomListView, CustomListViewValuesArr);
-        list.setAdapter( adapter );
-        btnAdd.setOnClickListener(
+        adapter = new ListViewActivity(CustomListView, CustomListViewValuesArr);
+        list.setAdapter(adapter);
+
+    }
+    public void addPlanet() {
+        btnAd.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        startActivity(new Intent(MainActivity.this,AddProduct.class));
+                        startActivity(new Intent(MainActivity.this, AddProduct.class));
 
 
                     }
                 }
         );
-
-
-
-
     }
+
+
+
     /****** Function to set data in ArrayList *************/
     public void setListData()
     {
 
 
-        for (int i = 0; i < 11; i++) {
-
-            final Product sched = new Product();
-            final AddProduct add = new AddProduct();
-
-            /******* Firstly take data in model object ******/
-            sched.setName(add.editName.getText().toString());
-            sched.setCategory(add.editCategory.getText().toString());
-            sched.setPrice(Double.parseDouble(add.editPrice.getText().toString()));
-            sched.save();
+       final AddProduct add;
 
             /******** Take Model Object in ArrayList **********/
             CustomListViewValuesArr.add( sched );
-        }
+
 
 
     }

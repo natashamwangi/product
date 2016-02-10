@@ -2,7 +2,6 @@ package com.example.nancyprojects.product;
 
 
 import android.app.Activity;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ public class ListViewActivity extends BaseAdapter {
     private Activity activity;
     private ArrayList data;
     private static LayoutInflater inflater=null;
-    public Resources res;
     Product tempValues=null;
     int i=0;
 
