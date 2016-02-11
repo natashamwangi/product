@@ -11,20 +11,19 @@ import android.widget.EditText;
 import android.widget.Button;
 
 public class AddProduct extends AppCompatActivity {
-    Button btnAdd;
 
-    EditText editName,editCategory,editPrice;
+    EditText editName, editCategory, editPrice;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-
+        final Button btnAdd;
         editName = (EditText) findViewById(R.id.editText_name);
         editCategory = (EditText) findViewById(R.id.editText_category);
         editPrice = (EditText) findViewById(R.id.editText_price);
-        btnAdd = (Button) findViewById(R.id.button_add);
+        btnAdd = (Button) findViewById(R.id.button_addProduct);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,26 +36,29 @@ public class AddProduct extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        btnAdd.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        for (int i = 0; i < 11; i++) {
-
-                            final Product sched = new Product();
 
 
-                            /******* Firstly take data in model object ******/
-                            sched.setName(editName.getText().toString());
-                            sched.setCategory(editCategory.getText().toString());
-                            sched.setPrice(Double.parseDouble(editPrice.getText().toString()));
-                            sched.save();
+            btnAdd.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            for (int i = 0; i < 11; i++) {
+
+                                final Product sched = new Product();
 
 
+                                /******* Firstly take data in model object ******/
+                                sched.setName(editName.getText().toString());
+                                sched.setCategory(editCategory.getText().toString());
+                                sched.setPrice(Double.parseDouble(editPrice.getText().toString()));
+                                sched.save();
+
+
+                            }
                         }
                     }
-                }
-        );
-    }
+            );
+        }
+
 
 }

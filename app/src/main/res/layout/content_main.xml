@@ -16,7 +16,6 @@
         android:text="ADD"
         android:id="@+id/button_add"
 
-
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

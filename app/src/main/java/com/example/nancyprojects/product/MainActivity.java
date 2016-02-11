@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button btnAd;
     ListView list;
     ListViewActivity adapter;
     public MainActivity CustomListView = null;
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        final Button btnAd= (Button)findViewById(R.id.button_add);
         CustomListView = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+            btnAd.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            startActivity(new Intent(MainActivity.this, AddProduct.class));
+
+
+                        }
+                    }
+            );
+
+
 
         /******** Take some data in Arraylist ( CustomListViewValuesArr ) ***********/
         setListData();
@@ -59,19 +70,6 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(adapter);
 
     }
-    public void addPlanet() {
-        btnAd.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        startActivity(new Intent(MainActivity.this, AddProduct.class));
-
-
-                    }
-                }
-        );
-    }
 
 
 
@@ -79,19 +77,25 @@ public class MainActivity extends AppCompatActivity {
     public void setListData()
     {
 
+        for (int i = 0; i < 11; i++) {
 
-       final AddProduct add;
+            final Product add = new Product();
+
+            /******* Firstly take data in model object ******/
+            add.setName("Name "+i);
+            add.setCategory("Category" + i);
+            add.setPrice(Double.parseDouble("0.0" + i));
 
             /******** Take Model Object in ArrayList **********/
-           // CustomListViewValuesArr.add( add );
-
+            CustomListViewValuesArr.add(add);
+        }
 
 
     }
     /*****************  This function used by adapter ****************/
     public void onItemClick (int mPosition) {
       final Product tempValues = ( Product ) CustomListViewValuesArr.get(mPosition);
-        AddProduct ad = new AddProduct();
+       final  AddProduct ad = new AddProduct();
 
 
     Toast.makeText(CustomListView,
