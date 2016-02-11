@@ -27,6 +27,7 @@ public class ListViewActivity extends BaseAdapter {
         data=d;
 
 
+
         /***********  Layout inflator to call external xml layout () ***********/
         inflater = ( LayoutInflater )activity.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
