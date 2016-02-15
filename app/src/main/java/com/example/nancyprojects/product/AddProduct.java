@@ -44,6 +44,7 @@ public class AddProduct extends AppCompatActivity {
                         public void onClick(View v) {
                             for (int i = 0; i < 11; i++) {
 
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 final Product sched = new Product();
 
 
@@ -53,6 +54,8 @@ public class AddProduct extends AppCompatActivity {
                                 sched.setPrice(Double.parseDouble(editPrice.getText().toString()));
                                 sched.save();
 
+
+                                startActivity(intent);
 
                             }
                         }

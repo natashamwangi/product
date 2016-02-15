@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
     /*****************  This function used by adapter ****************/
     public void onItemClick (int mPosition) {
-      final Product tempValues = ( Product ) CustomListViewValuesArr.get(mPosition);
+      final Product tempValues = CustomListViewValuesArr.get(mPosition);
        final  AddProduct ad = new AddProduct();
 
 
